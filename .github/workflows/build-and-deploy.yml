@@ -20,3 +20,14 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
+      - uses: docker://pandoc/core:2.14
+        with:
+          args: >-
+            --standalone
+            --output=book.epub
+            document/main.md
+      - name: Archive epub 
+        uses: actions/upload-artifact@v2
+        with:
+          name: Epub
+          path: book.epub
