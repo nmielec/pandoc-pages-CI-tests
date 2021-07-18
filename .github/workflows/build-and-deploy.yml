@@ -6,7 +6,7 @@ jobs:
   pandoc-compile:
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get install pandoc
+      # - run: sudo apt-get install pandoc
       # - run: pandoc --help
       - uses: actions/checkout@v2
       - run: ls ${{ github.workspace }}
