@@ -4,9 +4,8 @@ jobs:
   pandoc-compile:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup directories, pull files
-        uses: actions/checkout@v2
-        run: mkdir build
+      - uses: actions/checkout@v2
+      - run: mkdir build
       - name: Compile html file with pandoc
         uses: docker://pandoc/core:2.14
         with:
