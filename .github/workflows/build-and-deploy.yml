@@ -1,0 +1,9 @@
+name: pandoc-build-and-publish
+on: [push]
+jobs: 
+  pandoc-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://pandoc/core
+        with:
+          args: "--help" # gets appended to pandoc command
