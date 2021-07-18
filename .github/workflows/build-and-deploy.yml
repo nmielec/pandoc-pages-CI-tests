@@ -1,9 +1,11 @@
 name: pandoc-build-and-publish
+
 on: [push]
+
 jobs: 
   pandoc-compile:
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://pandoc/core
+      - uses: docker://pandoc/core:2.14
         with:
           args: "--help" # gets appended to pandoc command
