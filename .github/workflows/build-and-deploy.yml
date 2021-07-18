@@ -8,4 +8,5 @@ jobs:
     steps:
       - run: sudo apt-get install pandoc
       # - run: pandoc --help
-      - run: ls ${{ github.workspace }}
+      - run: |
+        ls ${{ github.workspace }}
