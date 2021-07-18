@@ -9,4 +9,14 @@ jobs:
       # - run: sudo apt-get install pandoc
       # - run: pandoc --help
       - uses: actions/checkout@v2
-      - run: ls ${{ github.workspace }}
+      - run: mkdir build
+      - uses: docker://pandoc/core:2.14
+        with:
+          args: >-
+            --standalone
+            --output=build/index.html
+            document/main.md
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
