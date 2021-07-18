@@ -1,5 +1,8 @@
 name: pandoc-build-and-publish
-on: [push]
+on:
+  push:
+    paths:
+      - 'document/*.md'
 jobs:
   pandoc-compile:
     runs-on: ubuntu-latest
