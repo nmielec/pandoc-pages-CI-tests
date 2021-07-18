@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: sudo apt-get install pandoc
-      - run: pandoc --help
-      - run: ls
+      # - run: pandoc --help
+      - run: ls ${{ github.workspace }}
