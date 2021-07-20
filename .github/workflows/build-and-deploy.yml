@@ -1,35 +1,36 @@
-name: pandoc-build-and-publish
+name: pandoc-build
 on:
   push:
     paths:
-      - 'document/*.md'
+      - 'document.md'
 jobs:
   pandoc-compile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: mkdir build
-      - name: Compile html file with pandoc
-        uses: docker://pandoc/core:2.14
-        with:
-          args: >-
-            --standalone
-            --output=build/index.html
-            document/main.md
-      - name: Compile epub file with pandoc
-        uses: docker://pandoc/core:2.14
-        with:
-          args: >-
-            --standalone
-            --output=book.epub
-            document/main.md
-      - name: Deploy to pages
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+      - run: sudo apt-get install pandoc
+      # - name: Compile html file with pandoc
+      #   uses: docker://pandoc/core:2.14
+      #   with:
+      #     args: >-
+      #       --standalone
+      #       --output=build/index.html
+      #       document.md
+      # - name: Compile epub file with pandoc
+      #   uses: docker://pandoc/core:2.14
+      #   with:
+      #     args: >-
+      #       --standalone
+      #       --output=build/book.epub
+      #       document.md
+      # - name: Deploy to pages
+      #   uses: JamesIves/github-pages-deploy-action@4.1.4
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: build # The folder the action should deploy.
+      - run: make
       - name: Archive epub in actions
         uses: actions/upload-artifact@v2
         with:
           name: Epub
-          path: book.epub
+          path: build/
