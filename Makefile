@@ -16,7 +16,7 @@ html: $(BUILD)/html/$(BOOKNAME).html
 
 $(BUILD)/epub/$(BOOKNAME).epub: $(TITLE) $(CHAPTERS)
 	mkdir -p $(BUILD)/epub
-	pandoc -S --epub-metadata=$(METADATA) -o $@ $^
+	pandoc --epub-metadata=$(METADATA) -o $@ $^
 
 $(BUILD)/html/$(BOOKNAME).html: $(CHAPTERS)
 	mkdir -p $(BUILD)/html
