@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - 'document.md'
+      - 'metadata.xml'
+      - '.github/**'
+      - 'Makefile'
 jobs:
   pandoc-compile:
     runs-on: ubuntu-latest
