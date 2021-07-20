@@ -1,7 +1,7 @@
 BUILD = build
 BOOKNAME = 112_Gripes_about_the_French.epub
 METADATA = metadata.xml
-CHAPTERS = 112-gripes-about-the-french_pdftotext.md
+CHAPTERS = document.md
 
 all: book
 
